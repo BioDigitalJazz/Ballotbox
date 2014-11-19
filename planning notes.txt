@@ -1,0 +1,46 @@
+Client:
+
+a client can access a presentation anonymously
+a client can view a presentation
+a client can vote on survey questions within the presentation
+a client can access a presentation by id code (backup?)
+clients in a presentation will be able to view feedback on the previous survey
+
+
+Admin:
+
+an admin can generate a presentation including survey slides for realtime feedback
+an admin can save survey feedback for later use
+
+
+
+Bonus: (probably not enough time)
+
+an admin can generate feedback quesitons on the fly (mid presentation)
+a presentation can be set to require sign-in by the user
+sign in would allow for threaded comments
+presentations should be accessed via location when possible
+a client can pose questions to the presenter
+an admin can edit/create presentations
+an admin can choose the format of each survey slide (bar/pie charts, whatever)
+
+
+page list
+
+ / - main page (login button / view a presentation button / about us, etc)
+
+ /admin/admin_id (buttons for list of current presentation, list of survey feedback from previous presentation / create presentation, edit account details)
+
+ /admin/edit admin_id
+
+ /presentations - list of presentations, options to edit/delete
+
+ /presentaitons/create - title says it all
+
+ /presentations/edit presentation_id edit a presentation
+
+ /survey_results(or whatever) - list of survey feedback from presentations
+
+ /present/presentation_id - page viewed by users in a presentation
+
+
