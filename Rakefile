@@ -9,7 +9,7 @@ PG_SPEC = {
   adapter:  'postgresql',
   host:     'localhost',
   database: 'postgres', 
-  username: 'dev',
+  username: 'dave',
   password: '1234'
 }
 
