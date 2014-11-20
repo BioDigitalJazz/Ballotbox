@@ -1,0 +1,12 @@
+[Run these commands in the terminal before rake db:create]
+
+sudo -u postgres psql postgres
+
+[enter your su password]
+[now you're in psql]
+
+# \password postgres
+
+Enter new password: 
+
+[enter 'postgres' without the quotes]

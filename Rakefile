@@ -5,15 +5,23 @@ require ::File.expand_path('../config/environment', __FILE__)
 Rake::Task["db:create"].clear
 Rake::Task["db:drop"].clear
 
-# NOTE: Assumes SQLite3 DB
+PG_SPEC = {
+  adapter:  'postgresql',
+  host:     'localhost',
+  username: 'postgres',
+  password: 'postgres'
+}
+
 desc "create the database"
-task "db:create" do
-  touch 'db/db.sqlite3'
+task "db:create" do 
+  ActiveRecord::Base.establish_connection(PG_SPEC)
+  ActiveRecord::Base.connection.drop_database('ballotbox') rescue nil
+  ActiveRecord::Base.connection.create_database('ballotbox')
 end
 
 desc "drop the database"
 task "db:drop" do
-  rm_f 'db/db.sqlite3'
+  ActiveRecord::Base.connection.drop_database('ballotbox') rescue nil
 end
 
 desc 'Retrieves the current schema version number'
