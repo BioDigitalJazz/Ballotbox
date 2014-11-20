@@ -1,0 +1,8 @@
+1) Slide.type changed to Slide.slide_type because type is a reserved keyword
+
+2) Modified the schema diagram to reflect change 1) and rearranged field orders
+
+3) Slide.slide_number starts at 1, 2, 3...
+
+4) SurveyOption.option_number starts at 0, 1, 2....
+0 is the question itself, text storing the question text, total_votes sum of votes for all options

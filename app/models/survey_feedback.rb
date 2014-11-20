@@ -7,6 +7,6 @@ class SurveyFeedback < ActiveRecord::Base
     self.total_votes ||= 0
   end             
 
-  belongs_to :surveyoption
+  belongs_to :survey_option
   belongs_to :session
 end
