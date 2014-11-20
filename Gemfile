@@ -15,4 +15,6 @@ group :development, :test do
   gem 'pry'
   gem 'shotgun'
   gem 'pg'
+  gem "factory_girl", "~> 4.0"
+  gem 'faker'
 end
