@@ -1,6 +1,6 @@
 class SurveyOption < ActiveRecord::Base
   
-  validates :option_label, presence: true, 
+  validates :option_label, presence: true
                             
   validates :text, presence: true                                                              
 

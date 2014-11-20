@@ -8,7 +8,7 @@ configure do
     adapter:  'postgresql',
     host:     'localhost',
     database: 'ballotbox',
-    username: 'dave',
+    username: 'dev',
     password: '1234'
   }
 
