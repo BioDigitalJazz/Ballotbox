@@ -1,0 +1,25 @@
+<section class="swag text-center">
+  <div class="container">
+      <div class="row">
+         <div class="col-md-8 col-md-offset-2">
+             <h1>CREATE<span>your presentation</span></h1>
+              <a href="#portfolio" class="down-arrow-btn"><i class="fa fa-chevron-down"></i>
+              </a>
+         </div>
+      </div>
+  </div>
+</section>
+
+<form method="post" action="/presentations">
+  <div class="container">
+    <label>Title</label>
+    <input type="text" name="title" value="<%= @presentation && @presentation.title %>">
+  </div>
+  <div class="container">
+    <label>Description:</label>
+    <input type="text" name="description" value="<%= @presentation && @presentation.description %>">
+  </div>
+  <div class="container">
+    <input type="submit" value="Submit">
+  </div>
+</form>
