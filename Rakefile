@@ -5,11 +5,13 @@ require ::File.expand_path('../config/environment', __FILE__)
 Rake::Task["db:create"].clear
 Rake::Task["db:drop"].clear
 
+current_user = ENV['USERNAME'] || ENV['USER']
+
 PG_SPEC = {
   adapter:  'postgresql',
   host:     'localhost',
   database: 'postgres', 
-  username: ENV['USERNAME'],
+  username: current_user,
   password: '1234'
 }
 
