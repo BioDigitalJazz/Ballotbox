@@ -1,9 +1,6 @@
 sudo -u postgres psql postgres
 
-postgres=# CREATE USER dev CREATEDB;
-postgres=> \password dev
-Enter new password: 
-Enter it again: 
+postgres=# CREATE USER dev CREATEDB PASSWORD '1234;
 postgres=# \q
 
 dev is your Linux/Vagarant username
