@@ -4,11 +4,13 @@ configure do
     ActiveRecord::Base.logger = Logger.new(STDOUT)
   end
 
+  current_user = ENV['USERNAME'] || ENV['USER']
+
   set :database, {
     adapter:  'postgresql',
     host:     'localhost',
     database: 'ballotbox',
-    username: 'dev',
+    username: current_user,
     password: '1234'
   }
 
