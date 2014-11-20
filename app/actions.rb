@@ -5,7 +5,11 @@ get '/' do
 end
 
 get '/present/:presentation_access_code' do
-  #page viewed by users in a presentation
+  #presentation landing page
+end
+
+get '/present/:presentation_access_code/:slide number' do
+  #a particular slide in a presentation
 end
 
 get 'survey_results/:presentation_access_code' do
