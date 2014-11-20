@@ -1,0 +1,23 @@
+sudo -u postgres psql postgres
+
+postgres=# CREATE USER dev CREATEDB PASSWORD '1234;
+postgres=# \q
+
+dev is your Linux/Vagarant username
+
+Change the username/password in ./Rakefile and ./config/database.rb accordingly
+
+===========================================
+
+[Don't run these unless the above doesn't work]
+
+sudo -u postgres psql postgres
+# \password postgres
+Enter new password: 
+
+[enter 'postgres' without the quotes]
+
+Enter it again: 
+postgres=# \q
+
+Change the username/password in ./Rakefile and ./config/database.rb to 'postgres' and 'postgres'
