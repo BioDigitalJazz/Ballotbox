@@ -8,8 +8,8 @@ configure do
     adapter:  'postgresql',
     host:     'localhost',
     database: 'ballotbox',
-    username: 'postgres',
-    password: 'postgres'
+    username: 'dev',
+    password: '1234'
   }
 
   # Load all models from app/models, using autoload instead of require

@@ -8,8 +8,9 @@ Rake::Task["db:drop"].clear
 PG_SPEC = {
   adapter:  'postgresql',
   host:     'localhost',
-  username: 'postgres',
-  password: 'postgres'
+  database: 'postgres', 
+  username: 'dev',
+  password: '1234'
 }
 
 desc "create the database"

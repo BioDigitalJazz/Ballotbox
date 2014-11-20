@@ -1,12 +1,26 @@
-[Run these commands in the terminal before rake db:create]
-
 sudo -u postgres psql postgres
 
-[enter your su password]
-[now you're in psql]
+postgres=# CREATE USER dev CREATEDB;
+postgres=> \password dev
+Enter new password: 
+Enter it again: 
+postgres=# \q
 
+dev is your Linux/Vagarant username
+
+Change the username/password in ./Rakefile and ./config/database.rb accordingly
+
+===========================================
+
+[Don't run these unless the above doesn't work]
+
+sudo -u postgres psql postgres
 # \password postgres
-
 Enter new password: 
 
 [enter 'postgres' without the quotes]
+
+Enter it again: 
+postgres=# \q
+
+Change the username/password in ./Rakefile and ./config/database.rb to 'postgres' and 'postgres'
