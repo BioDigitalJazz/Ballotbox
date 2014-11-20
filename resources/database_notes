@@ -6,8 +6,7 @@
 
 [bonus ?]
 
-4) SurveyOption.option_number starts at 0, 1, 2....
-  0 is the question itself, text storing the question text, total_votes sum of votes for all options
+4) SurveyOption.option_number starts at 1, 2....
 
 5) We assume Session is created_at the time of presentation
 -- use updated_at later to allow creating sessions in advance?
