@@ -15,17 +15,19 @@ PG_SPEC = {
   password: '1234'
 }
 
+APP_DATABASE = 'ballotbox'
+
 desc "create the database"
 task "db:create" do 
   ActiveRecord::Base.establish_connection(PG_SPEC)
-  ActiveRecord::Base.connection.drop_database('ballotbox') rescue nil
-  ActiveRecord::Base.connection.create_database('ballotbox')
+  ActiveRecord::Base.connection.drop_database(APP_DATABASE) rescue nil
+  ActiveRecord::Base.connection.create_database(APP_DATABASE)
 end
 
 desc "drop the database"
 task "db:drop" do
   ActiveRecord::Base.establish_connection(PG_SPEC)
-  ActiveRecord::Base.connection.drop_database('ballotbox') rescue nil
+  ActiveRecord::Base.connection.drop_database(APP_DATABASE) rescue nil
 end
 
 desc 'Retrieves the current schema version number'

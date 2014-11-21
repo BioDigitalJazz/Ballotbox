@@ -1,6 +1,8 @@
-[Run these commands only if you're on Linux/Vagarant]
-
+[if you're on Linux/Vagarant]
 sudo -u postgres psql postgres
+
+[if you're on Windows/Mac]
+psql postgres
 
 [put your username in place of dev in the following command]
 
