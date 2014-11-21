@@ -4,14 +4,12 @@ configure do
     ActiveRecord::Base.logger = Logger.new(STDOUT)
   end
 
-  current_user = ENV['USERNAME'] || ENV['USER']
-
   set :database, {
     adapter:  'postgresql',
     host:     'localhost',
     database: 'ballotbox',
-    username: current_user,
-    password: '1234'
+    username: 'ballotbox_admin',
+    password: 'slides'
   }
 
   # Load all models from app/models, using autoload instead of require
