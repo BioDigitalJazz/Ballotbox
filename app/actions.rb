@@ -10,12 +10,12 @@ helpers do
     if session[:slide_number] >= get_presentation.slides.count
       redirect '/present/:presentation_access_code'
     else
-      session[:slide_number += 1]
+      session[:slide_number] += 1
     end
   end
 
   def back_slide
-
+    session[:slide]
   end
 end
 
@@ -24,8 +24,8 @@ get '/' do
 end
 
 get '/present/go_to/:presentation_access_code' do
-  session[presentation_access_code: params[:presentation_access_code]]\
-  session[slide_number: 1]
+  session[presentation_access_code: params[:presentation_access_code]]
+  session[:slide_number] = 1
   redirect "/present/presentation/:#{session[:presentation_acces_code]}"
 end
 
