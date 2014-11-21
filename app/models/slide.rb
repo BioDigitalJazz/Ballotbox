@@ -15,9 +15,9 @@ class Slide < ActiveRecord::Base
   belongs_to  :presentation
   has_many    :survey_options
 
-  def register_vote(survey_option)
-    SurveyFeedback.create(survey_option: survey_option, session: session[:session_id])
-  end
-
+  #####Keeping this here for now, but we probably don't need it. -DH
+  # def register_vote(survey_option)
+  #   SurveyFeedback.create(survey_option: survey_option, session: session[:session_id])
+  # end
 
 end
