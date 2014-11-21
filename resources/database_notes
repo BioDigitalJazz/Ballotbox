@@ -1,12 +1,11 @@
 1) Slide.type changed to Slide.slide_type because type is a reserved keyword
 
-2) Modified the schema diagram to reflect change 1) and rearranged field orders
+2) SurveyOption.option_number changed to SurveyOption.option_label
 
 3) Slide.slide_number starts at 1, 2, 3...
 
-[bonus ?]
 
-4) SurveyOption.option_number starts at 1, 2....
+[Bonus ?]
 
-5) We assume Session is created_at the time of presentation
+1) We assume Session is created_at the time of presentation
 -- use updated_at later to allow creating sessions in advance?
