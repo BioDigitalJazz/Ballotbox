@@ -1,12 +1,16 @@
+[if you're on Linux/Vagarant]
 sudo -u postgres psql postgres
 
-postgres=# CREATE USER dev CREATEDB PASSWORD '1234;
+[if you're on Windows/Mac]
+psql postgres
+
+[from psql]
+postgres=# CREATE USER ballotbox_admin CREATEDB PASSWORD 'slides';
 postgres=# \q
 
-If you're on Mac or Windows, dev
+[NOTE: the username 'ballotbox_admin' and password 'slides' are hard-coded
+in Rakefile and config/database.rb. You need to modify them if you set your own username/password on your PostgreSQL server]
 
-If you're on Linux/Vagarant, put your username in place of dev
-  and change the username/password in ./Rakefile and ./config/database.rb accordingly
 
 ===========================================
 
