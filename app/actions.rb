@@ -1,21 +1,24 @@
-# Homepage (Root path)
 
 helpers do
 
   def get_presentation
-    Session.where[access_code: session[:presentation_access_code]].presentation
+    get_session.presentation
+  end
+
+  def get_session
+    Session.where[access_code: session[:presentation_access_code]].first
   end
 
   def advance_slide
     if session[:slide_number] >= get_presentation.slides.count
       redirect '/present/:presentation_access_code'
     else
-      session[:slide_number += 1]
+      session[:slide_number] += 1
     end
   end
 
   def back_slide
-
+    session[:slide_number] -= 1
   end
 end
 
@@ -23,28 +26,42 @@ get '/' do
   erb :index
 end
 
-get '/present/go_to/:presentation_access_code' do
-  session[presentation_access_code: params[:presentation_access_code]]\
-  session[slide_number: 1]
-  redirect "/present/presentation/:#{session[:presentation_acces_code]}"
-end
-
-get '/present/presentation/:presentation_access_code' do
-  erb :'/present/presentation'
+get '/go_to/present/:presentation_access_code' do
+  session[presentation_access_code: params[:presentation_access_code]]
+  session[:slide_number] = 1
+  redirect "/present/:#{session[:presentation_acces_code]}/:#{session[:slide_number]}"
 end
 
 get '/present/:presentation_access_code/:slide_number' do
-  #a particular slide in a presentation
+  erb :'/present/presentation'
 end
 
-get 'survey_results/:presentation_access_code' do
-  #list of survey feedback from presentations
+get '/present/:presentation_access_code/next_slide' do
+  advance_slide
+  redirect "/present/:#{session[:presentation_acces_code]}/:#{session[:slide_number]}"
 end
 
-get '/presentations' do
-  #list of presentations, options to edit/delete
+get '/present/:presentation_access_code/previous_slide' do
+  back_slide
+  redirect "/present/:#{session[:presentation_acces_code]}/:#{session[:slide_number]}"
 end
 
-post '/present/:presentation_access_code/:slide_number/vote/:survey_option_id' do
 
+post '/present/:presentation_access_code/:slide_number/vote/:survey_option' do
+  option = SurveyOption.where(survey_option: survey_option_id)
+  SurveyFeedback.create(survey_option: option, session: get_session)
 end
+######This is another way to do it.  I thought I'd keep the code around for now -DH
+# post '/present/:presentation_access_code/:slide_number/vote/:survey_option' do
+#   get_session.presentation.slides.where(slide_number: session[:slide_number]).first.register_vote(:survey_option)
+#   redirect "/present/:#{session[:presentation_acces_code]}/:#{session[:slide_number]}"
+# end
+
+# get 'survey_results/:presentation_access_code' do
+#   #list of survey feedback from presentations
+# end
+
+# get '/presentations' do
+#   #list of presentations, options to edit/delete
+# end
+
