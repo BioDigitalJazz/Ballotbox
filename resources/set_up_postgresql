@@ -4,9 +4,13 @@ sudo -u postgres psql postgres
 [if you're on Windows/Mac]
 psql postgres
 
-
+[from psql]
 postgres=# CREATE USER ballotbox_admin CREATEDB PASSWORD 'slides';
 postgres=# \q
+
+[NOTE: the username 'ballotbox_admin' and password 'slides' are hard-coded
+in Rakefile and config/database.rb. You need to modify them if you set your own username/password on your PostgreSQL server]
+
 
 ===========================================
 
