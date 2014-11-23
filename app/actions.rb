@@ -1,3 +1,5 @@
+# Ting: experiment
+Sinatra::register Gon::Sinatra
 
 helpers do
 
@@ -24,6 +26,15 @@ end
 
 get '/' do
   erb :index
+end
+
+# Ting: experiment
+get '/survey_results' do
+  # gon.o1 = 10
+  # gon.o2 = 3
+  # gon.o3 = 5
+  gon.results = [10, 3, 5, 7, 2, 9, 1, 10]
+  erb :survey_results
 end
 
 get '/go_to/present/:presentation_access_code' do
