@@ -1,6 +1,17 @@
-<h1>Slides</h1>
+<h1><%= @survey_options.title %></h1>
 
-<% @slides.each do |slide| %>
+<p>
+ <%= @survey_options.survey_option_id %>
+</p>
+
+<h1>Results</h1>
+<p>
+
+</p>
+
+<a href="index">Back to Homepage</a>
+
+<% @survey_options.id.each do |survey_option| %>
   <div class="slide">
     <h3>
       <a href="/presentation/<%= slide.id %>"><%= slide.title %></a> 

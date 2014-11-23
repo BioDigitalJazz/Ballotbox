@@ -1,0 +1,48 @@
+<section class="swag text-center">
+  <div class="container">
+      <div class="row">
+         <div class="col-md-8 col-md-offset-2">
+             <h1><%= 'title' %> <span></span></h1>
+              <a href="#portfolio" class="down-arrow-btn"><i class="fa fa-chevron-down"></i>
+              </a>
+         </div>
+      </div>
+  </div>
+</section>
+
+<%= Session.where(:access_code == session[:presentation_access_code]).first.presentation.slides.where(:slide_number == session[:slide_number]).first.content %>
+
+<div class="ignite-cta text-center">
+  <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+           <a href="/present/<%= session[:presentation_access_code] %>/next" class="ignite-btn">Next</a>
+         </div>
+     </div>
+  </div>
+</div>
+
+
+<!--  def advance_slide
+    if session[:slide_number] >= get_presentation.slides.count
+      redirect '/present/:presentation_access_code'
+    else
+      session[:slide_number] += 1
+    end
+  end
+
+
+get '/present/:presentation_access_code/next_slide' do
+  advance_slide
+  redirect "/present/:#{session[:presentation_acces_code]}/:#{session[:slide_number]}"
+end -->
+
+<!-- <div class="ignite-cta text-center">
+  <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+           <a href="#" class="ignite-btn">Result</a>
+         </div>
+     </div>
+  </div>
+</div> -->
