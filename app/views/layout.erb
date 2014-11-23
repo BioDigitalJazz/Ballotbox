@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ballot Box - An awesome app made by Dave, Ting & Natasha</title>
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/stylesheets/flexslider.css" rel="stylesheet" >
     <link href="/stylesheets/styles.css" rel="stylesheet">
     <link href="/stylesheets/queries.css" rel="stylesheet">
     <link href="/stylesheets/animate.css" rel="stylesheet">
+  
 <head>
   <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
@@ -51,22 +56,22 @@
         </div>
       </div>
     </nav>
-    
-      <footer>
-         <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <ul class="legals">
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">Legals</a></li>
-              </ul>
-            </div>
-          <div class="col-md-6 credit">
-             <p>Designed &amp; Developed exclusively in <a href="http://www.lighthouselabs.ca/"><em>LIGHTHOUSE LABS</em></a></p>
+    <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
+    <%= yield %>
+    <footer>
+       <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="legals">
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Legals</a></li>
+            </ul>
           </div>
-         </div>
+        <div class="col-md-6 credit">
+           <p>Designed &amp; Developed exclusively in <a href="http://www.lighthouselabs.ca/"><em>LIGHTHOUSE LABS</em></a></p>
+        </div>
        </div>
-     </footer>
-  <%= yield %>
+     </div>
+   </footer>
 </body>
 </html>

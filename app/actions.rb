@@ -39,7 +39,7 @@ get '/present/:presentation_access_code/:slide_number' do
   erb :'/present/presentation'
 end
 
-get '/present/:presentation_access_code/previous_slide' do
+get '/present/:presentation_access_code/previous' do
   back_slide
   redirect "/present/:#{session[:presentation_access_code]}/:#{session[:slide_number]}"
 end
