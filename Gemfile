@@ -17,4 +17,5 @@ group :development, :test do
   gem 'pg'
   gem "factory_girl", "~> 4.0"
   gem 'faker'
+  gem 'gon-sinatra'
 end

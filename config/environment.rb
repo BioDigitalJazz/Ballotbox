@@ -7,6 +7,9 @@ require 'active_support/all'
 require 'sinatra'
 require 'sinatra/activerecord'
 
+# Ting: experiment
+require 'gon-sinatra'
+
 require 'pry'
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
