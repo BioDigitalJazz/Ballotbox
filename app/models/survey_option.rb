@@ -5,5 +5,5 @@ class SurveyOption < ActiveRecord::Base
   validates :text, presence: true                                                              
 
   belongs_to :slide
-  has_many   :survey_feedbacks
+  has_many   :survey_feedbacks, dependent: :destroy
 end
