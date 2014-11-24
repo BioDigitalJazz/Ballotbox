@@ -1,9 +1,4 @@
-<% if %>
-
-<% @slide = Slide.find_by(:access_code == session[:presentation_access_code]).presentation.slides%>
-
-<% end %>
-
+<% @slide = Slide.find_by(:access_code == session[:presentation_access_code]).presentation.slides.find_by(:slide_number == session[:slide_number])%>
 
 <section class="swag text-center">
   <div class="container">
