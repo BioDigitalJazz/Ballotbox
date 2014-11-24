@@ -1,6 +1,3 @@
-# Ting: experiment
-
-
 Sinatra::register Gon::Sinatra
 
 helpers do
@@ -26,15 +23,6 @@ end
 
 get '/' do
   erb :index
-end
-
-# Ting: experiment
-get '/survey_results' do
-  # gon.o1 = 10
-  # gon.o2 = 3
-  # gon.o3 = 5
-  gon.results = [10, 3, 5, 7, 2, 9, 1, 10]
-  erb :survey_results
 end
 
 get '/go_to/present/:presentation_access_code' do
@@ -63,10 +51,28 @@ get '/present/:presentation_access_code/previous' do
   redirect "/present/:#{session[:presentation_access_code]}/:#{session[:slide_number]}"
 end
 
+get '/survey_feedback' do
+  @tp = TrackPresentation.where(:access_code == session[:presentation_access_code]).first
+  @p = @tp.presentation
+  @the_slides = @p.slides.where(slide_number: session[:slide_number])
+  @slide = @the_slides.first
+  @survey_options = @slide.survey_options
 
-post '/present/:presentation_access_code/:slide_number/vote/:survey_option' do
-  option = SurveyOption.where(survey_option: survey_option_id)
+  gon.survey_options  = []
+  gon.option_votes  = []
+  @survey_options.each_with_index do |survey_option, index|
+    gon.survey_options[index] = "#{survey_option.option_label} : #{survey_option.text}"
+    gon.option_votes[index] = SurveyFeedback.where(track_presentation: @tp, survey_option: survey_option).count
+    # binding.pry
+  end
+
+  erb :survey_feedback
+end
+
+post '/present/:presentation_access_code/:slide_number/vote' do
+  option = SurveyOption.find(params[:selected_option])
   SurveyFeedback.create(survey_option: option, track_presentation: get_track_presentation)
+  redirect '/survey_feedback'
 end
 ######This is another way to do it.  I thought I'd keep the code around for now -DH
 # post '/present/:presentation_access_code/:slide_number/vote/:survey_option' do

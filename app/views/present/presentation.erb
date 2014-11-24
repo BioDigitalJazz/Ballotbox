@@ -4,9 +4,8 @@
   <div class="container">
       <div class="row">
          <div class="col-md-8 col-md-offset-2">
-             <h1><%= 'Ballot Box' %> <span></span></h1>
-              <%= session[:slide_number] %>
-<!--                <%= p Slide.find_by(:access_code == session[:presentation_access_code]).presentation.slides.find_by(:slide_number == session[:slide_number])  %> -->
+           <h1><%= 'Ballot Box' %> <span></span></h1>
+           <%= session[:slide_number] %>
          </div>
       </div>
   </div>
@@ -37,10 +36,10 @@
               <div class="row">
                 <div class="col-md-8 col-md-offset-2 wp1">
                   <h1 class="arrow">Choose one of the following:</h1>
-                    <form action="/present/56469/<%= session[:slide_number] %>/vote/:survey_option" method="post">
+                    <form action="/present/56469/<%= session[:slide_number] %>/vote" method="post">
                       <% @slide.survey_options.each do |survey_option| %>
                         <label><%= survey_option.option_label %>: <%= survey_option.text %></label><br />
-                        <input type="radio" name="survey_option.id" /><br />
+                        <input type="radio" name="selected_option" value="<%= survey_option.id %>" /><br />
                       <% end %>
                     <button type="submit">Submit</button>                                       
                     </form>
