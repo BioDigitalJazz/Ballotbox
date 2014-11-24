@@ -1,20 +1,20 @@
 # Ting: experiment
+
+
 Sinatra::register Gon::Sinatra
 
 helpers do
 
   def get_presentation
-    get_session.presentation
+    get_track_presentation.presentation
   end
 
-  def get_session
-    Session.where[access_code: session[:presentation_access_code]].first
+  def get_track_presentation
+    TrackPresentation.where(:access_code == session[:presentation_access_code]).first
   end
 
   def advance_slide
-    if session[:slide_number] >= get_presentation.slides.count
-      redirect '/present/:presentation_access_code'
-    else
+    if !(session[:slide_number] >= get_presentation.slides.count)
       session[:slide_number] += 1
     end
   end
@@ -38,29 +38,35 @@ get '/survey_results' do
 end
 
 get '/go_to/present/:presentation_access_code' do
-  session[presentation_access_code: params[:presentation_access_code]]
+  session[:presentation_access_code] = params[:presentation_access_code]
   session[:slide_number] = 1
-  redirect "/present/:#{session[:presentation_acces_code]}/:#{session[:slide_number]}"
+  redirect "/present/#{session[:presentation_access_code]}/#{session[:slide_number]}"
+end
+
+get '/present/:presentation_access_code/next' do
+  advance_slide
+  redirect "/present/#{session[:presentation_access_code]}/#{session[:slide_number]}"
 end
 
 get '/present/:presentation_access_code/:slide_number' do
+  @tp = TrackPresentation.where(:access_code == params[:presentation_access_code]).first
+  @p = @tp.presentation
+  @the_slides = @p.slides.where(slide_number: params[:slide_number])
+  @slide = @the_slides.first
+  test = params[:slide_number]
+  # binding.pry
   erb :'/present/presentation'
 end
 
-get '/present/:presentation_access_code/next_slide' do
-  advance_slide
-  redirect "/present/:#{session[:presentation_acces_code]}/:#{session[:slide_number]}"
-end
-
-get '/present/:presentation_access_code/previous_slide' do
+get '/present/:presentation_access_code/previous' do
   back_slide
-  redirect "/present/:#{session[:presentation_acces_code]}/:#{session[:slide_number]}"
+  redirect "/present/:#{session[:presentation_access_code]}/:#{session[:slide_number]}"
 end
 
 
 post '/present/:presentation_access_code/:slide_number/vote/:survey_option' do
   option = SurveyOption.where(survey_option: survey_option_id)
-  SurveyFeedback.create(survey_option: option, session: get_session)
+  SurveyFeedback.create(survey_option: option, track_presentation: get_track_presentation)
 end
 ######This is another way to do it.  I thought I'd keep the code around for now -DH
 # post '/present/:presentation_access_code/:slide_number/vote/:survey_option' do

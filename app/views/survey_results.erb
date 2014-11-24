@@ -1,11 +1,25 @@
 <!-- Ting: experiment -->
 
-<script src="javascript/chart_js/Chart.js"></script>
+<section class="swag text-center">
+  <div class="container">
+      <div class="row">
+         <div class="col-md-8 col-md-offset-2">
+             <h1><%= 'Results' %> <span></span></h1>
+         </div>
+      </div>
+  </div>
+</section>
 
-<%= include_gon %>
-
-<canvas id="myChart" width="400" height="400"></canvas>
-<div id="legend"></div>
-
-<script src="javascript/test_pie.js"></script>
+ <section class="intro text-center section-padding" id="intro">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2 wp1">
+                <h1 class="arrow">Total Votes</h1>
+                <p><%= include_gon %></p>
+                <canvas id="myChart" width="400" height="400"></canvas>
+                <div id="legend"></div>
+              </div>
+            </div>
+         </div>
+  </section>
 

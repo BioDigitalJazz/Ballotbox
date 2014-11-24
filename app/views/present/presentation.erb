@@ -1,0 +1,61 @@
+
+
+<section class="swag text-center">
+  <div class="container">
+      <div class="row">
+         <div class="col-md-8 col-md-offset-2">
+             <h1><%= 'Ballot Box' %> <span></span></h1>
+              <%= session[:slide_number] %>
+<!--                <%= p Slide.find_by(:access_code == session[:presentation_access_code]).presentation.slides.find_by(:slide_number == session[:slide_number])  %> -->
+         </div>
+      </div>
+  </div>
+</section>
+ <section class="intro text-center section-padding" id="intro">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2 wp1">
+                <h1 class="arrow">Best Slide Ever!</h1>
+                <p><%= @slide.content %></p>
+              </div>
+            </div>
+         </div>
+  </section>
+
+<div class="ignite-cta text-center">
+  <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+           <a href="/present/<%= session[:presentation_access_code] %>/next" class="ignite-btn">Next</a>
+         </div>
+     </div>
+  </div>
+</div>
+  <% if @slide.slide_type == 'survey' %>
+   <section class="intro text-center section-padding" id="intro">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2 wp1">
+                  <h1 class="arrow">Choose one of the following:</h1>
+                    <form action="/present/56469/<%= session[:slide_number] %>/vote/:survey_option" method="post">
+                      <% @slide.survey_options.each do |survey_option| %>
+                        <label><%= survey_option.option_label %>: <%= survey_option.text %></label><br />
+                        <input type="radio" name="survey_option.id" /><br />
+                      <% end %>
+                    <button type="submit">Submit</button>                                       
+                    </form>
+                  </div>
+              </div>
+           </div>
+    </section>
+
+  <div class="ignite-cta text-center">
+    <div class="container">
+        <div class="row">
+           <div class="col-md-12">
+             <a href="/survey_feedback" class="ignite-btn">Result</a>
+           </div>
+       </div>
+    </div>
+  </div>
+<% end %>

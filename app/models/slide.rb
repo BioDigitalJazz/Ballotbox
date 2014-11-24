@@ -13,7 +13,7 @@ class Slide < ActiveRecord::Base
   end
 
   belongs_to  :presentation
-  has_many    :survey_options
+  has_many    :survey_options, dependent: :destroy
 
   #####Keeping this here for now, but we probably don't need it. -DH
   # def register_vote(survey_option)
