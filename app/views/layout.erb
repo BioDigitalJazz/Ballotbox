@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ballot Box - An awesome app made by Dave, Ting & Natasha</title>
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/flexslider.css" rel="stylesheet" >
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="css/queries.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
+    <link href="/stylesheets/flexslider.css" rel="stylesheet" >
+    <link href="/stylesheets/styles.css" rel="stylesheet">
+    <link href="/stylesheets/queries.css" rel="stylesheet">
+    <link href="/stylesheets/animate.css" rel="stylesheet">
+  
 <head>
   <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
@@ -21,12 +26,13 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/javascript/application.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="js/waypoints.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/scripts.js"></script>
-  <script src="js/jquery.flexslider.js"></script>
-  <script src="js/modernizr.js"></script>
+  <script src="/javascript/waypoints.min.js"></script>
+  <script src="/javascript/bootstrap.min.js"></script>
+  <script src="/javascript/scripts.js"></script>
+  <script src="/javascript/jquery.flexslider.js"></script>
+  <script src="/javascript/modernizr.js"></script>
+  <script src="javascript/test_pie.js"></script>
+  <script src="javascript/chart_js/Chart.js"></script>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,21 +58,22 @@
         </div>
       </div>
     </nav>
-      <footer>
-         <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <ul class="legals">
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">Legals</a></li>
-              </ul>
-            </div>
-          <div class="col-md-6 credit">
-             <p>Designed &amp; Developed exclusively in <a href="http://www.lighthouselabs.ca/"><em>LIGHTHOUSE LABS</em></a></p>
+    <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
+    <%= yield %>
+    <footer>
+       <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="legals">
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Legals</a></li>
+            </ul>
           </div>
-         </div>
+        <div class="col-md-6 credit">
+           <p>Designed &amp; Developed exclusively in <a href="http://www.lighthouselabs.ca/"><em>LIGHTHOUSE LABS</em></a></p>
+        </div>
        </div>
-     </footer>
-  <%= yield %>
+     </div>
+   </footer>
 </body>
 </html>

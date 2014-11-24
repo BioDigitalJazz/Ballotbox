@@ -1,6 +1,6 @@
-class AddSessions < ActiveRecord::Migration
+class AddTrackPresentation < ActiveRecord::Migration
   def change
-    create_table :sessions do |t|
+    create_table :track_presentation do |t|
       t.references  :presentation
       t.string      :access_code
 

@@ -1,4 +1,4 @@
-class Session < ActiveRecord::Base
+class TrackPresentation < ActiveRecord::Base
   validates :access_code, presence: true, uniqueness: true
 
   belongs_to  :presentation

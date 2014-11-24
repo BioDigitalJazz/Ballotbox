@@ -37,7 +37,7 @@ end
 1.upto(3) do |pi| 
   pre = FactoryGirl.create(:presentation)
 
-  ses1 = pre.sessions.create(access_code: Faker::Address.zip)
+  ses1 = pre.track_presentations.create(access_code: Faker::Address.zip)
 
   1.upto(5) do |si|
     s_type = si.odd? ? 'regular' : 'survey'
@@ -50,7 +50,7 @@ end
         opt = sli.survey_options.create(option_label: label, text: Faker::Company.name)
 
         votes = rand(10)
-        1.upto(votes) { |fi| opt.survey_feedbacks.create(session: ses1) }
+        1.upto(votes) { |fi| opt.survey_feedbacks.create(track_presentation: ses1) }
       end
     end
   end
