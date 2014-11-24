@@ -1,4 +1,6 @@
 # Ting: experiment
+
+
 Sinatra::register Gon::Sinatra
 
 helpers do
@@ -7,8 +9,8 @@ helpers do
     get_session.presentation
   end
 
-  def get_session
-    Session.where(:access_code == session[:presentation_access_code]).first
+  def get_track_presentation
+    TrackPresentation.where(:access_code == session[:presentation_access_code]).first
   end
 
   def advance_slide
@@ -47,6 +49,9 @@ get '/present/:presentation_access_code/next' do
 end
 
 get '/present/:presentation_access_code/:slide_number' do
+  @slide = TrackPresentation.where(:access_code == params[:presentation_access_code]).first.presentation.slides.where(:slide_number == params[:slide_number]).first
+  # test = params[:slide_number]
+  # binding.pry
   erb :'/present/presentation'
 end
 
@@ -58,7 +63,7 @@ end
 
 post '/present/:presentation_access_code/:slide_number/vote/:survey_option' do
   option = SurveyOption.where(survey_option: survey_option_id)
-  SurveyFeedback.create(survey_option: option, session: get_session)
+  SurveyFeedback.create(survey_option: option, track_presentation: get_track_presentation)
 end
 ######This is another way to do it.  I thought I'd keep the code around for now -DH
 # post '/present/:presentation_access_code/:slide_number/vote/:survey_option' do

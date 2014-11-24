@@ -1,10 +1,16 @@
-<% @slide = Session.where(:access_code == session[:presentation_access_code]).first.presentation.slides.where(:slide_number == session[:slide_number]).first %>
+<% if %>
+
+<% @slide = Slide.find_by(:access_code == session[:presentation_access_code]).presentation.slides%>
+
+<% end %>
+
 
 <section class="swag text-center">
   <div class="container">
       <div class="row">
          <div class="col-md-8 col-md-offset-2">
              <h1><%= 'Ballot Box' %> <span></span></h1>
+               <%= p @slide  %>
          </div>
       </div>
   </div>
@@ -29,29 +35,40 @@
      </div>
   </div>
 </div>
- <section class="intro text-center section-padding" id="intro">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 wp1">
-                <h1 class="arrow">Questions</h1>
-                  <form action="/present/56469/:slide_number/vote/:survey_option" method="post">
-                    <label>A: dklajdkjsad</label><br />
-                    <input type="radio" name="option1" /><br />
-                    <label>B: oiuoidas</label><br />
-                    <input type="radio" name="option2" /><br />
-                    <label>C: hodiajidlja</label><br />
-                    <input type="radio" name="option3" /><br />
-                    <button type="submit">Submit</button>
-                  </form>
-                </div>
-            </div>
-         </div>
-  </section>
+
+  <#% binding.pry %>
+
+  <%=  @slide.slide_type  %>
+
+   <section class="intro text-center section-padding" id="intro">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2 wp1">
+                  <h1 class="arrow">Choose one of the following:</h1>
+                    <form action="/present/56469/<%= session[:slide_number] %>/vote/:survey_option" method="post">
+                      <label>A: dklajdkjsad</label><br />
+                      <input type="radio" name="option1" /><br />
+                      <label>B: oiuoidas</label><br />
+                      <input type="radio" name="option2" /><br />
+                      <label>C: hodiajidlja</label><br />
+                      <input type="radio" name="option3" /><br />
+                      <label>D: fsfsfdsget</label><br />
+                      <input type="radio" name="option3" /><br />
+                      <label>E: gdfsfdfe4dd</label><br />
+                      <input type="radio" name="option3" /><br /> 
+                      <button type="submit">Submit</button>                                       
+                    </form>
+                  </div>
+              </div>
+           </div>
+    </section>
+    <#% end %>
+
 <div class="ignite-cta text-center">
   <div class="container">
       <div class="row">
          <div class="col-md-12">
-           <a href="/feedback" class="ignite-btn">Result</a>
+           <a href="/survey_feedback" class="ignite-btn">Result</a>
          </div>
      </div>
   </div>
