@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(version: 20141124112500) do
     t.datetime "updated_at"
   end
 
-  create_table "sessions", force: true do |t|
-    t.integer  "presentation_id"
-    t.string   "access_code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "slides", force: true do |t|
     t.integer  "presentation_id"
     t.integer  "slide_number"

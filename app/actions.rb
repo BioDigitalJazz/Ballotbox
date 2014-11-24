@@ -6,7 +6,7 @@ Sinatra::register Gon::Sinatra
 helpers do
 
   def get_presentation
-    get_session.presentation
+    get_track_presentation.presentation
   end
 
   def get_track_presentation
@@ -49,8 +49,11 @@ get '/present/:presentation_access_code/next' do
 end
 
 get '/present/:presentation_access_code/:slide_number' do
-  @slide = TrackPresentation.where(:access_code == params[:presentation_access_code]).first.presentation.slides.where(:slide_number == params[:slide_number]).first
-  # test = params[:slide_number]
+  @tp = TrackPresentation.where(access_code: params[:presentation_access_code]).first
+  @p = @tp.presentation
+  @the_slides = @p.slides.where(slide_number: params[:slide_number])
+  @slide = @the_slides.first
+  test = params[:slide_number]
   # binding.pry
   erb :'/present/presentation'
 end

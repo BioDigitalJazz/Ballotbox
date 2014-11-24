@@ -1,11 +1,12 @@
-<% @slide = Slide.find_by(:access_code == session[:presentation_access_code]).presentation.slides.find_by(:slide_number == session[:slide_number])%>
+
 
 <section class="swag text-center">
   <div class="container">
       <div class="row">
          <div class="col-md-8 col-md-offset-2">
              <h1><%= 'Ballot Box' %> <span></span></h1>
-               <%= p @slide  %>
+              <%= session[:slide_number] %>
+<!--                <%= p Slide.find_by(:access_code == session[:presentation_access_code]).presentation.slides.find_by(:slide_number == session[:slide_number])  %> -->
          </div>
       </div>
   </div>
@@ -31,6 +32,8 @@
   </div>
 </div>
 
+  <% @slide = Slide.find_by(:access_code == session[:presentation_access_code]).presentation.slides.find_by(:slide_number == session[:slide_number])%>
+
   <#% binding.pry %>
 
   <%=  @slide.slide_type  %>
@@ -41,6 +44,12 @@
                 <div class="col-md-8 col-md-offset-2 wp1">
                   <h1 class="arrow">Choose one of the following:</h1>
                     <form action="/present/56469/<%= session[:slide_number] %>/vote/:survey_option" method="post">
+                    <% if @slide.slide_type == 'survey' %>
+                      <% @slide.survey_options.each do |survey_option| %>
+
+                      <% end %>
+                    <% end %>
+
                       <label>A: dklajdkjsad</label><br />
                       <input type="radio" name="option1" /><br />
                       <label>B: oiuoidas</label><br />
