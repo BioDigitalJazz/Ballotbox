@@ -49,7 +49,7 @@ get '/present/:presentation_access_code/next' do
 end
 
 get '/present/:presentation_access_code/:slide_number' do
-  @tp = TrackPresentation.where(access_code: params[:presentation_access_code]).first
+  @tp = TrackPresentation.where(:access_code == params[:presentation_access_code]).first
   @p = @tp.presentation
   @the_slides = @p.slides.where(slide_number: params[:slide_number])
   @slide = @the_slides.first
