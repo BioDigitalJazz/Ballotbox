@@ -37,12 +37,10 @@ get '/present/:presentation_access_code/next' do
 end
 
 get '/present/:presentation_access_code/:slide_number' do
-  @tp = TrackPresentation.where(:access_code == params[:presentation_access_code]).first
-  @p = @tp.presentation
-  @the_slides = @p.slides.where(slide_number: params[:slide_number])
-  @slide = @the_slides.first
-  test = params[:slide_number]
-  # binding.pry
+  tp = TrackPresentation.where(:access_code == params[:presentation_access_code]).first
+  p = tp.presentation
+  @slide = p.slides.where(slide_number: params[:slide_number]).first
+
   erb :'/present/presentation'
 end
 
@@ -52,21 +50,19 @@ get '/present/:presentation_access_code/previous' do
 end
 
 get '/survey_feedback' do
-  @tp = TrackPresentation.where(:access_code == session[:presentation_access_code]).first
-  @p = @tp.presentation
-  @the_slides = @p.slides.where(slide_number: session[:slide_number])
-  @slide = @the_slides.first
-  @survey_options = @slide.survey_options
+  tp = TrackPresentation.where(:access_code == session[:presentation_access_code]).first
+  p = tp.presentation
+  slide = p.slides.where(slide_number: session[:slide_number]).first
+  survey_options = slide.survey_options
 
   gon.survey_options  = []
   gon.option_votes  = []
-  @survey_options.each_with_index do |survey_option, index|
+  survey_options.each_with_index do |survey_option, index|
     gon.survey_options[index] = "#{survey_option.option_label} : #{survey_option.text}"
-    gon.option_votes[index] = SurveyFeedback.where(track_presentation: @tp, survey_option: survey_option).count
-    # binding.pry
+    gon.option_votes[index] = SurveyFeedback.where(track_presentation: tp, survey_option: survey_option).count
   end
 
-  erb :survey_feedback
+  erb :'/present/survey_feedback'
 end
 
 post '/present/:presentation_access_code/:slide_number/vote' do

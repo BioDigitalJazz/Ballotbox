@@ -9,7 +9,7 @@ require_relative '../config/database'
 # p_demo = Presentation.create(title: "Ballotbox Demo", description: "Initial demo at Lighthouse Labs")
 # 1.upto(4) do |i|
 #   s_type = i.odd? ? 'regular' : 'survey'
-#   s_img_path = "images/presentation/#{p_demo.id}/slide_#{i}.jpg" 
+#   s_img_path = "img/presentation/#{p_demo.id}/slide_#{i}.jpg" 
 #   s_content = "<div class='slide'><img src='#{s_img_path}'></div>"
 #   s_demo = p_demo.slides.create(slide_number: i, slide_type: s_type, content: s_content)
 # end
