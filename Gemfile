@@ -10,12 +10,12 @@ gem 'sinatra-activerecord'
 
 gem 'puma'
 gem 'tux'
+gem 'pg'
+gem 'gon-sinatra'
 
 group :development, :test do
   gem 'pry'
   gem 'shotgun'
-  gem 'pg'
   gem "factory_girl", "~> 4.0"
   gem 'faker'
-  gem 'gon-sinatra'
 end

@@ -1,7 +1,7 @@
 Sinatra
 =============
 
-Brought to you by Lighthouse Labs
+Built as a group project at Lighthouse Labs.
 
 ## Getting Started
 
